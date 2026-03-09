@@ -48,19 +48,19 @@ import {
   
   const services = [
     {
-      title: "Web Developer",
+      title: "Autonomous Systems Lead",
       icon: web,
     },
     {
-      title: "React Developer",
+      title: "Full-Stack Developer",
       icon: mobile,
     },
     {
-      title: "Backend Developer",
+      title: "Robotics Researcher",
       icon: backend,
     },
     {
-      title: "Software Engineer",
+      title: "Technical Mentor",
       icon: creator,
     },
   ];
@@ -123,30 +123,30 @@ import {
   const experiences = [
 
   {
-    title: "Full Stack Developer",
-    company_name: "Memphis Express",
-    icon: memphis, // (use a logo if you have one or a placeholder)
+    title: "Freelance Full-Stack Engineer",
+    company_name: "Freelance",
+    icon: memphis,
     iconBg: "#383E56",
-    date: "June 2021 - 2023", // or whatever the real date is
+    date: "2022 - 2025",
     points: [
-      "Built and maintained internal tools for shipping and order tracking using React.js, Node.js, and MongoDB.",
-      "Created responsive admin panels and real-time features like chat and status updates.",
-      "Integrated third-party APIs and ensured high performance across all devices.",
-      "Worked directly with operations teams to automate manual workflows and improve efficiency.",
+      "Takalam: A real-time chatting platform utilizing WebSockets and modern UI/UX principles.",
+      "Tomato: A full-featured food ordering and tracking system.",
+      "Medical Booking: Developed a custom appointment system for a physiotherapy clinic.",
+      "Client Management: Managed the full project lifecycle for various shipping offices, from requirement gathering to final deployment and maintenance.",
     ],
   },
 
   {
-    title: "Freelance Full Stack Developer",
-    company_name: "Self-employed",
-    icon: freelance, // any icon or placeholder
+    title: "Autonomous Subsystem Director",
+    company_name: "SparkX Racing Team",
+    icon: freelance,
     iconBg: "#E6DEDD",
-    date: "2023 - Present",
+    date: "Jan 2026 - Present",
     points: [
-      "Developed custom websites and systems for small businesses in Egypt.",
-      "Handled entire project lifecycle from client communication to deployment.",
-      "Used React.js, Node.js, Express, and MongoDB to deliver modern, scalable web apps.",
-      "Offered services with a ‘build first, pay after approval’ model to build trust and portfolio.",
+      "Leadership & Mentorship: Directing a team of 10+ junior engineers, designing technical roadmaps, and conducting training on ROS2, Linux, and Python OOP.",
+      "System Architecture: Designing the full autonomous software stack from scratch, including perception, localization (GraphSLAM), and path planning.",
+      "Technical Implementation: Developing modular ROS2 nodes (Humble/Jazzy), URDF vehicle modeling, and Gazebo simulations for Shell Eco-Marathon and Formula Student.",
+      "Cross-Functional Integration: Collaborating with Mechanical and Electrical directors to integrate linear actuators, sensors, and braking systems into the vehicle chassis.",
     ],
   },
 ];

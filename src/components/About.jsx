@@ -47,11 +47,9 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I'm a skilled software developer with experience in
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Express. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
+        I am a Mechatronics Engineering student and Full-Stack Developer driven by the challenge of building complex, autonomous systems. Whether I’m architecting a scalable MERN-stack application or designing the autonomous logic for a racing vehicle, I focus on creating efficient, modular, and reliable solutions.
+
+Currently, I lead the Autonomous Subsystem for the SparkX Racing Team, where I manage a team of junior engineers to develop self-driving capabilities for international competitions. I thrive in high-pressure environments, turning abstract research into functional code—from ROS2 navigation stacks to real-time web interfaces.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap justify-center gap-10'>
