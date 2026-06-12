@@ -14,11 +14,11 @@ const Computers = ({ isMobile }) => {
   position={[-20, 50, 10]}
   angle={0.15}
   penumbra={1}
-  intensity={15} // was 1
+  intensity={15}
   castShadow
   shadow-mapSize={1024}
 />
-<pointLight intensity={2.5} /> // was 1
+<pointLight intensity={2.5} />
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.75}

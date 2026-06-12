@@ -35,6 +35,15 @@ import walaa from "./walaaScreen.png"
 import food from './foodScreen.png'
 import chats from './chats.png'
 
+import amr_img from "./amr.png";
+import farawla_img from "./farawla.png";
+import rc_website_img from "./rc_website.png";
+import remote_robotics_img from "./remote_robotics.png";
+import robotalent_img from "./robotalent.png";
+import roboagent_img from "./roboagent.png";
+import ed_img from "./ed.png";
+import sparkx_img from "./sparkx.png";
+
 export {
   logo,
   chats,
@@ -69,4 +78,12 @@ export {
   carrent,
   jobit,
   tripguide,
+  amr_img,
+  farawla_img,
+  rc_website_img,
+  remote_robotics_img,
+  robotalent_img,
+  roboagent_img,
+  ed_img,
+  sparkx_img,
 };

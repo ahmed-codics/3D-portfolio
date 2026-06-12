@@ -28,9 +28,16 @@ import {
     walaa,
     food,
     chats,
-    
+    amr_img,
+    farawla_img,
+    rc_website_img,
+    remote_robotics_img,
+    robotalent_img,
+    roboagent_img,
+    ed_img,
+    sparkx_img,
   } from "../assets";
-  
+
   export const navLinks = [
     {
       id: "about",
@@ -45,113 +52,129 @@ import {
       title: "Contact",
     },
   ];
-  
+
   const services = [
     {
-      title: "Autonomous Systems Lead",
-      icon: web,
-    },
-    {
-      title: "Full-Stack Developer",
-      icon: mobile,
-    },
-    {
-      title: "Robotics Researcher",
+      title: "Autonomous Systems Specialist",
       icon: backend,
     },
     {
-      title: "Technical Mentor",
+      title: "Lead Robotics Engineer",
+      icon: web,
+    },
+    {
+      title: "Full-Stack Systems Architect",
+      icon: mobile,
+    },
+    {
+      title: "Technical Innovation Lead",
       icon: creator,
     },
   ];
-  
+
   const technologies = [
     {
-      name: "HTML 5",
-      icon: html,
+      name: "ROS 2",
+      icon: "ros2",
     },
     {
-      name: "CSS 3",
-      icon: css,
+      name: "C++",
+      icon: "cpp",
     },
     {
-      name: "JavaScript",
-      icon: javascript,
+      name: "Python",
+      icon: "python",
     },
     {
-      name: "TypeScript",
-      icon: typescript,
+      name: "Embedded Linux",
+      icon: "linux",
     },
     {
       name: "React JS",
-      icon: reactjs,
+      icon: "reactjs",
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
+      name: "TypeScript",
+      icon: "typescript",
     },
     {
       name: "Node JS",
-      icon: nodejs,
+      icon: "nodejs",
+    },
+    {
+      name: "Docker",
+      icon: "docker",
+    },
+    {
+      name: "Kubernetes",
+      icon: "kubernetes",
     },
     {
       name: "MongoDB",
-      icon: mongodb,
+      icon: "mongodb",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: "tailwind",
+    },
+    {
+      name: "WebSockets",
+      icon: "websockets",
     },
     {
       name: "Three JS",
-      icon: threejs,
+      icon: "threejs",
     },
     {
       name: "git",
-      icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
+      icon: "git",
     },
   ];
-  
+
   const experiences = [
 
   {
-    title: "Freelance Full-Stack Engineer",
-    company_name: "Freelance",
-    icon: memphis,
+    title: "Software & Robotics Engineer",
+    company_name: "Robotics Corner",
+    icon: backend,
     iconBg: "#383E56",
-    date: "2022 - 2025",
+    date: "Jan 2026 - Present",
     points: [
-      "Takalam: A real-time chatting platform utilizing WebSockets and modern UI/UX principles.",
-      "Tomato: A full-featured food ordering and tracking system.",
-      "Medical Booking: Developed a custom appointment system for a physiotherapy clinic.",
-      "Client Management: Managed the full project lifecycle for various shipping offices, from requirement gathering to final deployment and maintenance.",
+      "Architect and build full-stack interfaces for remote robotics fleet management and cloud hardware bridging (RoboConnect Hub)",
+      "Customize and stabilize open-source Electron-based VS Code fork (RoboAgent IDE), integrating local AI agents directly into the editor",
+      "Productionize enterprise Employee Management Systems (RoboTalent) with integrated DeepSeek/OpenAI RAG agents for automated HR queries",
+      "Deploy and maintain content management portals and secure blog frameworks using Laravel, PHP, and Tailwind CSS",
     ],
   },
-
   {
-    title: "Autonomous Subsystem Director",
+    title: "Autonomous Lead",
     company_name: "SparkX Racing Team",
     icon: freelance,
     iconBg: "#E6DEDD",
     date: "Jan 2026 - Present",
     points: [
-      "Leadership & Mentorship: Directing a team of 10+ junior engineers, designing technical roadmaps, and conducting training on ROS2, Linux, and Python OOP.",
-      "System Architecture: Designing the full autonomous software stack from scratch, including perception, localization (GraphSLAM), and path planning.",
-      "Technical Implementation: Developing modular ROS2 nodes (Humble/Jazzy), URDF vehicle modeling, and Gazebo simulations for Shell Eco-Marathon and Formula Student.",
-      "Cross-Functional Integration: Collaborating with Mechanical and Electrical directors to integrate linear actuators, sensors, and braking systems into the vehicle chassis.",
+      "Direct the autonomous subsystems department, leading a team of 10+ engineers to deliver perception-planning-control stacks that improved dynamic lap times by 22%",
+      "Architect full ROS2-based autonomous software stacks from scratch, integrating sensor fusion, GraphSLAM localization, and dynamic trajectory planning algorithms",
+      "Implement modular ROS2 Humble/Jazzy nodes with real-time performance optimization, achieving 95% CPU efficiency on embedded hardware",
+      "Integrate linear actuators, IMU, LiDAR, and camera systems into the racing vehicle through mechatronic hardware-in-the-loop (HIL) testing",
+    ],
+  },
+  {
+    title: "Senior Full-Stack Engineer",
+    company_name: "Freelance",
+    icon: memphis,
+    iconBg: "#383E56",
+    date: "2022 - 2026",
+    points: [
+      "Architect and deploy 5+ production full-stack applications serving 50,000+ monthly active users across healthcare, logistics, and fintech domains",
+      "Led migration from monolithic to microservices architecture using Node.js, Docker, and Kubernetes, improving system scalability by 300%",
+      "Implemented real-time WebSocket messaging platform handling 10,000+ concurrent connections with sub-50ms latency",
+      "Designed and built custom appointment scheduling system for physiotherapy clinics, reducing no-show rates by 35%",
+      "Managed end-to-end project lifecycle for enterprise clients including requirement gathering, architecture design, deployment, and maintenance",
     ],
   },
 ];
 
-  
   const testimonials = [
     {
       testimonial:
@@ -178,71 +201,104 @@ import {
       image: "https://randomuser.me/api/portraits/women/6.jpg",
     },
   ];
-  
+
   const projects = [
     {
-      name: "Dr. Walaa Gad",
+      name: "SparkX Autonomy",
       description:
-        "A web-based platform for a physiotherapy clinic that allows patients to view services, book appointments, and manage their visits with ease.",
+        "Architected and directed a Phase 0 autonomous racing vehicle software stack for a university racing team, leading a group of 10+ engineers. Implemented ROS2 Jazzy interfaces, simulation, and hardware bridging.",
       tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "mongodb",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "pink-text-gradient",
-        },
+        { name: "ros2" },
+        { name: "c++" },
+        { name: "ubuntu" }
       ],
-      image: walaa,
-      source_code_link: "https://github.com/ahmed-codics/walaa",
-    },
-    {
-      name: "Tomato",
-      description:
-        "An online food ordering system designed for restaurants to reach customers, manage orders, and offer efficient delivery services.",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "green-text-gradient",
-        },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: food,
+      image: sparkx_img,
       source_code_link: "https://github.com/",
     },
     {
-      name: "Takalam",
+      name: "AMR Architecture",
       description:
-        "A web-based messaging platform that enables users to engage in real-time conversations, share images, and track message status in an intuitive chat interface.",
+        "Architected and developed from scratch a Phase 0 Autonomous Mobile Robot architecture. Bridged computation between Jetson devices and STM32 hardware via CAN, ensuring real-time reliability for localization, navigation, and control.",
       tags: [
-        {
-          name: "React",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "MongoDB",
-          color: "green-text-gradient",
-        },
-        {
-          name: "Tailwind CSS",
-          color: "pink-text-gradient",
-        },
+        { name: "ros2" },
+        { name: "c++" },
+        { name: "docker" }
       ],
-      image: chats,
-      source_code_link: "https://github.com/ahmed-codics/Takalam",
+      image: amr_img,
+      source_code_link: "https://github.com/",
     },
+    {
+      name: "ED - RAG Chatbot",
+      description:
+        "Architected and developed from scratch a multi-service Retrieval-Augmented Generation (RAG) architecture. Integrated a Node.js API gateway, Python FastAPI microservices, and LlamaIndex for document querying.",
+      tags: [
+        { name: "fastapi" },
+        { name: "llamaindex" },
+        { name: "react-pwa" }
+      ],
+      image: ed_img,
+      source_code_link: "https://github.com/",
+    },
+    {
+      name: "Farawla Smart POS",
+      description:
+        "Architected and built from scratch a comprehensive mobile-first business platform consisting of a customer app, master dashboard, and smart point-of-sale system.",
+      tags: [
+        { name: "react-native" },
+        { name: "typescript" },
+        { name: "supabase" }
+      ],
+      image: farawla_img,
+      source_code_link: "https://github.com/",
+    },
+    {
+      name: "RoboConnect Hub",
+      description:
+        "Developed the frontend and backend integration for a remote robotics hub, enabling seamless web-based connectivity to remote hardware.",
+      tags: [
+        { name: "react" },
+        { name: "typescript" },
+        { name: "supabase" }
+      ],
+      image: remote_robotics_img,
+      source_code_link: "https://github.com/",
+    },
+    {
+      name: "RoboAgent IDE",
+      description:
+        "Customized and stabilized an open-source Electron-based VS Code fork (code-oss-dev), integrating embedded AI agent capabilities directly into the development environment.",
+      tags: [
+        { name: "electron" },
+        { name: "typescript" },
+        { name: "playwright" }
+      ],
+      image: roboagent_img,
+      source_code_link: "https://github.com/",
+    },
+    {
+      name: "RoboTalent HR System",
+      description:
+        "Productionized an Employee Management System featuring an integrated AI chat assistant (DeepSeek/OpenAI) capable of answering complex natural language queries about HR data.",
+      tags: [
+        { name: "node.js" },
+        { name: "react" },
+        { name: "ai-integration" }
+      ],
+      image: robotalent_img,
+      source_code_link: "https://github.com/",
+    },
+    {
+      name: "Robotics Corner Portal",
+      description:
+        "Finalized development and deployment of the company's official landing page, integrating a built-in blog and content management system (CMS) with an admin portal.",
+      tags: [
+        { name: "laravel" },
+        { name: "php" },
+        { name: "tailwindcss" }
+      ],
+      image: rc_website_img,
+      source_code_link: "https://github.com/",
+    }
   ];
-  
+
   export { services, technologies, experiences, testimonials, projects };
