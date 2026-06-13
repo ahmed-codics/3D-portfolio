@@ -16,12 +16,17 @@ const Contact = () => {
     "> AWAITING OPERATOR INPUT..."
   ]);
   const endOfLogsRef = useRef(null);
+  const isFirstRender = useRef(true);
 
   const addLog = (log) => {
     setTerminalLogs(prev => [...prev.slice(-6), `> ${log}`]);
   };
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (endOfLogsRef.current) {
       endOfLogsRef.current.scrollIntoView({ behavior: "smooth" });
     }
