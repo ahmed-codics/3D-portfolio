@@ -1,0 +1,183 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CaseHeader from '../components/CaseHeader.astro';
+import Browser from '../components/Browser.astro';
+import PhoneVideo from '../components/PhoneVideo.astro';
+import ArchDiagram from '../components/ArchDiagram.astro';
+import Icon from '../components/Icon.astro';
+import { kavvi, fmt } from '../data/stats';
+import { profile } from '../data/profile';
+import landingEn from '../assets/work/kavvi/landing-en.png';
+import landingAr from '../assets/work/kavvi/landing-ar.png';
+import workspace from '../assets/work/kavvi/workspace.png';
+import steps from '../assets/work/kavvi/steps.png';
+import guide from '../assets/work/kavvi/guide.png';
+
+const facts: [string, string][] = [
+  ['Role', 'Founder &amp; sole engineer'],
+  ['Timeline', `Oct 2025 – now<br>Launched ${kavvi.launched}`],
+  ['Stack', 'React PWA, Node.js/Express, Python RAG service, MongoDB, Valkey/BullMQ, Docker, Caddy'],
+  ['Live', '<a href="https://kavvi.io">kavvi.io</a>'],
+];
+const sections = [
+  {
+    title: 'From lecture files to a course',
+    body: 'Students upload PDFs, PowerPoints, Word files or photos of their lectures. A Python retrieval (RAG) service splits them into units, lessons and concepts, and the model writes each lesson with citations back to the source. Kavvi proposes the subject in chat; the student accepts and the lessons build in the background on a job queue.',
+    img: workspace,
+    alt: 'Kavvi asking in Arabic whether to turn the uploaded physics lectures into a study subject, with Accept and Keep chatting buttons.',
+    caption: 'Kavvi proposes a subject from the uploaded lectures.',
+  },
+  {
+    title: 'A tutor that explains in Arabic or English',
+    body: 'Answers stream in either language. In Arabic mode the English term stays next to the Arabic explanation, because exams are in English. Replies can be read aloud with word-by-word highlighting (Azure text-to-speech).',
+    img: steps,
+    alt: 'A step-by-step thermodynamics solution in Arabic with the English term “work” and the equations ΔU = Q − W.',
+    caption: 'A step-by-step solution, with the English term kept beside the Arabic.',
+  },
+  {
+    title: 'Answer cards that check themselves',
+    body: 'Students photograph a homework or exam question. Kavvi solves it twice, independently, and compares the two answers; when they disagree, a stronger model re-checks the work before anything is shown. A guided mode gives hints first, for students who want to solve it themselves.',
+    img: guide,
+    alt: 'Kavvi’s guided mode in Arabic: tabs for guided, independent and learn-with-me, and two numbered hints.',
+    caption: 'Guided mode: hints first, the full solution only on request.',
+  },
+];
+---
+<Base
+  title="Kavvi case study · Ahmed Mansour"
+  description={`How I designed, built and launched Kavvi, a bilingual AI study platform, on my own: ${kavvi.students} students and ${kavvi.lessons} AI-built lessons in its first two weeks.`}
+>
+  <CaseHeader label="Case study · Kavvi" title="Kavvi: an AI study platform I built and launched alone" facts={facts}>
+    <p>
+      Kavvi turns a student's own lectures into lessons, practice questions, flashcards and a study plan, and explains
+      everything in English or Egyptian Arabic. I designed it, wrote every part of it, run it in production, and made the
+      videos that brought in its first users.
+    </p>
+  </CaseHeader>
+
+  <div class="wrap showcase">
+    <figure class="show-video">
+      <PhoneVideo src="/media/kavvi-launch.mp4" poster="/media/kavvi-launch.jpg" label="Kavvi launch video, muted: lectures become lessons, concepts and practice." />
+      <figcaption>Launch video (Egyptian Arabic, muted).</figcaption>
+    </figure>
+    <div class="show-shots">
+      <figure>
+        <Browser src={landingEn} url="kavvi.io" alt="Kavvi's landing page in English: “Your next ‘I get it.’”" sizes="(min-width: 960px) 760px, 92vw" eager />
+      </figure>
+      <figure>
+        <Browser src={landingAr} url="kavvi.io · العربية" alt="Kavvi's landing page in Arabic, laid out right to left." sizes="(min-width: 960px) 760px, 92vw" />
+        <figcaption>The same landing page in English and Arabic; the whole app switches direction with the language.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap results">
+    <p class="label">Results</p>
+    <div class="spec six">
+      <div><span class="label">Students</span><b>{fmt(kavvi.students)}</b></div>
+      <div><span class="label">Subjects</span><b>{fmt(kavvi.subjects)}</b></div>
+      <div><span class="label">Lessons</span><b>{fmt(kavvi.lessons)}</b></div>
+      <div><span class="label">Concepts</span><b>~{fmt(Math.round(kavvi.concepts / 100) * 100)}</b></div>
+      <div><span class="label">Paying customers</span><b>{kavvi.payers}</b></div>
+      <div><span class="label">Top video views</span><b>{kavvi.topVideoViews}</b></div>
+    </div>
+    <p class="spec-note">Totals as of {kavvi.asOf}, about two weeks after launch. Views are for the best launch video on TikTok.</p>
+  </div>
+
+  <article class="wrap body">
+    <div class="prose read">
+      <h2>The problem</h2>
+      <p>
+        Most students at Egyptian universities study from English slides and PDFs, but many of them think and ask in
+        Arabic. Help usually means a private tutor, or a general chatbot that has never seen the course. I wanted
+        something that starts from <strong>your own lectures</strong>, explains them the way a friend would, and tells you
+        what to study next.
+      </p>
+      <h2>What I built</h2>
+    </div>
+
+    {sections.map((s, i) => (
+      <section class:list={['feature', i % 2 === 1 && 'flip']}>
+        <div class="prose">
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+        </div>
+        <figure class="frame">
+          <Picture src={s.img} alt={s.alt} formats={['avif', 'webp']} fallbackFormat="jpg" widths={[400, 700, 1080]} sizes="(min-width: 900px) 420px, 92vw" />
+          <figcaption>{s.caption} Frame from the launch video, which rebuilds the real interface.</figcaption>
+        </figure>
+      </section>
+    ))}
+
+    <div class="prose read">
+      <h3>Study plans</h3>
+      <p>
+        Students add their exam dates and Kavvi plans their week around them, linking each session to the right lessons
+        and concepts, then adjusts as lessons are finished.
+      </p>
+      <h3>Payments that work in Egypt</h3>
+      <p>
+        Most students don't have cards, so Pro is paid by InstaPay or a mobile wallet. The student uploads a transfer
+        screenshot; Kavvi runs it through fraud checks, turns Pro on right away when it's safe to, and queues it for admin
+        review. Plan limits and usage metering keep the AI bill predictable.
+      </p>
+      <h3>Running it in production</h3>
+      <p>
+        Everything runs on one Linux VPS with Docker Compose. Changes go to a sandbox copy first and are tested with
+        Playwright; every deploy saves the images it replaces, so rolling back is one command.
+      </p>
+    </div>
+
+    <div class="arch-wrap">
+      <ArchDiagram />
+    </div>
+
+    <div class="prose read">
+      <h2>What I learned</h2>
+      <ul>
+        <li><strong>Build the safety net before the features.</strong> A sandbox, image backups and one-command rollbacks are what let one person ship every day without breaking things for students.</li>
+        <li><strong>Bilingual is a design problem, not a translation task.</strong> Right-to-left layout, English terms inside Arabic sentences and mixed digits each needed their own rules.</li>
+        <li><strong>Cost limits are part of the product.</strong> Daily limits, usage meters and honest upgrade messages came from the AI bill, and they shaped the Pro plan.</li>
+      </ul>
+      <p class="next">
+        <a class="btn btn--primary" href="https://kavvi.io">Try Kavvi <Icon name="external" /></a>
+        <a class="btn" href="/robotics-corner">Next: Robotics Corner <Icon name="arrow" /></a>
+        <a class="btn" href={profile.cv}><Icon name="download" />CV</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .showcase { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); align-items: start; }
+  .show-video { position: sticky; top: 84px; }
+  .show-shots { display: grid; gap: 18px; min-width: 0; }
+  .results { padding-block: clamp(48px, 7vw, 80px) 0; display: grid; gap: 12px; }
+  .spec.six { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .body { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 5vw, 56px); padding-block: clamp(48px, 7vw, 80px); }
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: clamp(24px, 5vw, 64px); align-items: center; }
+  .feature.flip .frame { order: -1; }
+  .feature .prose { max-width: 56ch; }
+  .frame img { border-radius: 16px; border: 1px solid var(--line-strong); background: #0b100e; width: 100%; }
+  .arch-wrap { max-width: 960px; min-width: 0; }
+  .next { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  @media (max-width: 1000px) {
+    .spec.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .spec.six > div:nth-child(4) { border-left: 0; }
+    .spec.six > div:nth-child(n + 4) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 860px) {
+    .showcase { grid-template-columns: minmax(0, 1fr); }
+    .show-video { position: static; width: min(260px, 70%); justify-self: center; }
+    .feature { grid-template-columns: minmax(0, 1fr); }
+    .feature.flip .frame { order: 0; }
+    .frame { max-width: 420px; }
+  }
+  @media (max-width: 720px) {
+    .spec.six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .spec.six > div { border-left: 0; border-top: 1px solid var(--line); }
+    .spec.six > div:nth-child(-n + 2) { border-top: 0; }
+    .spec.six > div:nth-child(even) { border-left: 1px solid var(--line); }
+  }
+</style>

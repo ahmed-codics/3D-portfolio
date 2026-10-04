@@ -1,0 +1,37 @@
+---
+// Title block for a case study: back link, label, title, lead and a spec-style fact table.
+import Icon from './Icon.astro';
+interface Props { label: string; title: string; facts: [string, string][] }
+const { label, title, facts } = Astro.props;
+---
+<header class="case-head wrap">
+  <a class="back" href="/#work"><Icon name="back" />All work</a>
+  <p class="label label--accent">{label}</p>
+  <h1>{title}</h1>
+  <div class="lead read"><slot /></div>
+  <dl class="facts">
+    {facts.map(([k, v]) => (<div><dt class="label">{k}</dt><dd set:html={v} /></div>))}
+  </dl>
+</header>
+
+<style>
+  .case-head { display: grid; gap: 18px; padding-block: clamp(36px, 6vw, 72px) clamp(28px, 4vw, 44px); }
+  .back { display: inline-flex; align-items: center; gap: 6px; width: fit-content; font-size: var(--s-15); font-weight: 600; text-decoration: none; color: var(--ink-2); }
+  .back:hover { color: var(--ink); }
+  .back :global(svg) { width: 16px; height: 16px; }
+  h1 { font-size: clamp(2rem, 1.3rem + 2.8vw, 3rem); max-width: 22ch; }
+  .lead { font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem); color: var(--ink-2); }
+  .facts {
+    margin: 8px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); overflow: hidden;
+  }
+  .facts > div { padding: 14px 16px; border-left: 1px solid var(--line); display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .facts > div:first-child { border-left: 0; }
+  .facts dd { margin: 0; font-size: var(--s-15); line-height: 1.5; overflow-wrap: anywhere; }
+  .facts dd :global(a) { color: var(--accent-ink); font-weight: 600; }
+  @media (max-width: 760px) {
+    .facts { grid-template-columns: minmax(0, 1fr); }
+    .facts > div { border-left: 0; border-top: 1px solid var(--line); }
+    .facts > div:first-child { border-top: 0; }
+  }
+</style>

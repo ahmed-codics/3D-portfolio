@@ -1,0 +1,57 @@
+---
+// Kavvi's production architecture, drawn by hand. Colors come from the theme tokens.
+---
+<figure class="arch">
+  <div class="scroll" tabindex="0" role="group" aria-label="Kavvi architecture diagram (scrolls sideways on small screens)">
+    <svg viewBox="0 0 880 330" role="img" aria-labelledby="arch-title arch-desc">
+      <title id="arch-title">Kavvi architecture</title>
+      <desc id="arch-desc">
+        The React PWA talks to Caddy, which forwards to the Node.js and Express API. The API uses MongoDB, queues work in
+        Valkey for a BullMQ worker, calls a Python RAG service that calls LLM APIs, and uses Azure text-to-speech. Everything
+        runs in Docker Compose on one Linux VPS.
+      </desc>
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 10 5 0 10z" class="ah" />
+        </marker>
+      </defs>
+      <rect class="vps" x="196" y="14" width="670" height="302" rx="14" />
+      <text class="cap" x="214" y="38">Linux VPS · Docker Compose</text>
+
+      <g class="node user"><rect x="14" y="128" width="150" height="74" rx="10" /><text x="89" y="160">Student</text><text class="sub" x="89" y="181">React PWA · AR / EN</text></g>
+      <g class="node"><rect x="226" y="128" width="130" height="74" rx="10" /><text x="291" y="160">Caddy</text><text class="sub" x="291" y="181">HTTPS · reverse proxy</text></g>
+      <g class="node key"><rect x="400" y="128" width="170" height="74" rx="10" /><text x="485" y="160">Node.js API</text><text class="sub" x="485" y="181">Express · auth · billing</text></g>
+
+      <g class="node"><rect x="620" y="52" width="226" height="56" rx="10" /><text x="733" y="76">MongoDB</text><text class="sub" x="733" y="95">users · subjects · lessons</text></g>
+      <g class="node"><rect x="620" y="137" width="226" height="56" rx="10" /><text x="733" y="161">Valkey + BullMQ worker</text><text class="sub" x="733" y="180">lesson builds · background jobs</text></g>
+      <g class="node"><rect x="620" y="222" width="226" height="56" rx="10" /><text x="733" y="246">Python RAG service</text><text class="sub" x="733" y="265">chunking · retrieval · citations</text></g>
+
+      <g class="node ext"><rect x="400" y="246" width="170" height="54" rx="10" /><text x="485" y="269">LLM APIs · Azure TTS</text><text class="sub" x="485" y="287">outside the VPS</text></g>
+
+      <path class="edge" d="M164 165H222" marker-end="url(#arrow)" />
+      <path class="edge" d="M356 165H396" marker-end="url(#arrow)" />
+      <path class="edge" d="M570 150 616 82" marker-end="url(#arrow)" />
+      <path class="edge" d="M570 165H616" marker-end="url(#arrow)" />
+      <path class="edge" d="M570 180 616 248" marker-end="url(#arrow)" />
+      <path class="edge dash" d="M485 202V242" marker-end="url(#arrow)" />
+      <path class="edge dash" d="M620 262H574" marker-end="url(#arrow)" />
+    </svg>
+  </div>
+  <figcaption>How Kavvi runs today. Every box inside the frame is a container on one VPS; the AI calls go out to hosted models.</figcaption>
+</figure>
+
+<style>
+  .scroll { overflow-x: auto; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); }
+  svg { min-width: 680px; width: 100%; height: auto; }
+  .vps { fill: color-mix(in srgb, var(--accent-soft) 55%, transparent); stroke: var(--line-strong); stroke-dasharray: 5 5; }
+  .cap { font: 500 12px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; fill: var(--muted); }
+  .node rect { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.2; }
+  .node.key rect { stroke: var(--accent); stroke-width: 1.6; }
+  .node.user rect { fill: var(--accent-soft); }
+  .node.ext rect { fill: var(--paper); stroke-dasharray: 4 4; }
+  .node text { font: 600 14px var(--font); fill: var(--ink); text-anchor: middle; }
+  .node text.sub { font: 400 11.5px var(--mono); fill: var(--muted); }
+  .edge { fill: none; stroke: var(--ink-2); stroke-width: 1.4; }
+  .edge.dash { stroke-dasharray: 4 4; }
+  .ah { fill: var(--ink-2); }
+</style>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+<Base title="Page not found · Ahmed Mansour" description="This page doesn't exist." noindex>
+  <section class="wrap nf">
+    <p class="label label--accent">404</p>
+    <h1>This page doesn't exist.</h1>
+    <p>The link may be old. Everything is on the home page.</p>
+    <p class="cta">
+      <a class="btn btn--primary" href="/"><Icon name="back" />Home</a>
+      <a class="btn" href="/kavvi">Kavvi case study</a>
+    </p>
+  </section>
+</Base>
+
+<style>
+  .nf { display: grid; gap: 16px; padding-block: clamp(64px, 12vw, 140px); }
+  .nf p:not(.label) { color: var(--ink-2); }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+</style>

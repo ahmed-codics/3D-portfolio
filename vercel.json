@@ -1,0 +1,27 @@
+{
+  "framework": "astro",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/Ahmed_Mansour_CV.pdf",
+      "destination": "/Ahmed-Mansour-CV.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/cv",
+      "destination": "/Ahmed-Mansour-CV.pdf",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

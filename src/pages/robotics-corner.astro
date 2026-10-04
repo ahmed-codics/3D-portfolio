@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import CaseHeader from '../components/CaseHeader.astro';
+import Browser from '../components/Browser.astro';
+import Icon from '../components/Icon.astro';
+import { profile } from '../data/profile';
+import rcSite from '../assets/work/rc-website.png';
+import roboagent from '../assets/work/roboagentweb.png';
+
+const facts: [string, string][] = [
+  ['Role', 'Software Engineer'],
+  ['Timeline', 'Jan – Oct 2026'],
+  ['Stack', 'React, TypeScript, Node.js/Express, PostgreSQL/Supabase, Laravel, Electron, Docker, Nginx, Jenkins'],
+  ['Live', '<a href="https://roboticscorner.tech">roboticscorner.tech</a>'],
+];
+const products = [
+  {
+    name: 'Company website',
+    status: 'Live',
+    what: 'The public site, with a blog and an admin portal for content.',
+    did: 'Finished and deployed it, including the blog and content management.',
+    stack: 'Laravel · PHP · Tailwind CSS',
+  },
+  {
+    name: 'HR / CRM system',
+    status: 'Live',
+    what: 'The internal system for staff, leads and HR.',
+    did: 'Built role-based access, a lead pipeline with workflow automation, financial validation and HR workflows.',
+    stack: 'React · Node.js · Express',
+  },
+  {
+    name: 'RoboConnect',
+    status: 'Ready for launch',
+    what: 'An Upwork-style marketplace for robotics work.',
+    did: 'Built dual-role dashboards, real-time messaging, Paymob escrow payments, AI CV parsing, and a 17-table PostgreSQL schema secured with Supabase row-level security.',
+    stack: 'React · TypeScript · Supabase · PostgreSQL',
+  },
+  {
+    name: 'ConnectedLabs',
+    status: 'Ready for launch',
+    what: 'Remote access to physical robots over SSH, for students and labs.',
+    did: 'Built secure provisioning, telemetry logging and systemd services, deployed with Docker, Nginx and Jenkins CI/CD.',
+    stack: 'Linux · SSH · Docker · Nginx · Jenkins',
+  },
+  {
+    name: 'RoboAgent + web platform',
+    status: 'Private beta',
+    what: 'An agentic coding assistant for robotics, built on a VS Code / Electron fork.',
+    did: 'Worked on the editor, and built its web platform: users describe a project, get it generated and download it as a ZIP, with plans and usage tracking.',
+    stack: 'Electron · TypeScript · Node.js',
+  },
+];
+---
+<Base
+  title="Robotics Corner case study · Ahmed Mansour"
+  description="How I took five Robotics Corner products from broken prototypes to deploy-ready, on one shared database with single sign-on."
+>
+  <CaseHeader label="Case study · Robotics Corner" title="Five products, from broken prototype to production-ready" facts={facts}>
+    <p>
+      Robotics Corner is an Egyptian robotics education and products company. I joined as a software engineer and was
+      handed prototypes that were buggy, unfinished or not working at all. Over ten months I took five of them to
+      deploy-ready, all on <strong>one shared database with single sign-on</strong>, so a customer has one account across
+      every product.
+    </p>
+  </CaseHeader>
+
+  <div class="wrap shots">
+    <Browser src={rcSite} url="roboticscorner.tech" alt="The Robotics Corner website home page." sizes="(min-width: 960px) 540px, 92vw" eager />
+    <Browser src={roboagent} url="roboagentweb.vercel.app" alt="The RoboAgent website: “The AI IDE built for robotics.”" sizes="(min-width: 960px) 540px, 92vw" />
+  </div>
+
+  <div class="wrap list">
+    <p class="label">The five products</p>
+    {products.map((p, i) => (
+      <article class="product">
+        <p class="num label">{String(i + 1).padStart(2, '0')}</p>
+        <div class="p-main">
+          <h2>{p.name} <span class:list={['status', p.status === 'Live' && 'live']}>{p.status}</span></h2>
+          <p class="what">{p.what}</p>
+          <p><strong>What I did:</strong> {p.did}</p>
+          <p class="stack">{p.stack}</p>
+        </div>
+      </article>
+    ))}
+    <div class="prose read outro">
+      <p>
+        The website and the HR/CRM system are in production. The other products are built and tested, and their launch is
+        waiting on payment-gateway approval rather than engineering work. Screenshots here are of public pages only.
+      </p>
+      <p class="next">
+        <a class="btn btn--primary" href="/kavvi">Next: Kavvi <Icon name="arrow" /></a>
+        <a class="btn" href={profile.cv}><Icon name="download" />CV</a>
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .list { display: grid; padding-block: clamp(48px, 7vw, 80px); }
+  .list > .label { margin-bottom: 8px; }
+  .product { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 8px 16px; padding-block: 24px; border-top: 1px solid var(--line); }
+  .num { padding-top: 6px; }
+  .p-main { display: grid; gap: 8px; max-width: 70ch; color: var(--ink-2); }
+  .p-main h2 { font-size: var(--s-21); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+  .p-main strong { color: var(--ink); font-weight: 600; }
+  .what { color: var(--ink); }
+  .stack { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); }
+  .status { font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 7px; border-radius: 5px; border: 1px solid var(--line-strong); color: var(--muted); }
+  .status.live { color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: var(--accent-soft); }
+  .outro { padding-top: 24px; border-top: 1px solid var(--line); }
+  .next { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  @media (max-width: 760px) {
+    .shots { grid-template-columns: minmax(0, 1fr); }
+    .product { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

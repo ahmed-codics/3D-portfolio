@@ -1,0 +1,67 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+---
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">AM</span>
+      <span class="name">Ahmed Mansour</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="/#work">Work</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a class="btn btn--sm" href={profile.cv}><Icon name="download" />CV</a>
+      <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">
+        <Icon name="moon" class="i-moon" /><Icon name="sun" class="i-sun" />
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement;
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    const next = dark ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 60px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 650; letter-spacing: -0.015em; min-width: 0; }
+  .mark {
+    display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; flex: none;
+    background: var(--accent); color: var(--on-accent);
+    font: 700 0.75rem/1 var(--mono); letter-spacing: 0.02em;
+  }
+  nav { display: flex; align-items: center; gap: clamp(10px, 2.4vw, 22px); font-size: var(--s-15); font-weight: 500; }
+  nav > a:not(.btn) { text-decoration: none; color: var(--ink-2); }
+  nav > a:not(.btn):hover { color: var(--ink); }
+  .theme {
+    display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer;
+  }
+  .theme :global(svg) { width: 17px; height: 17px; }
+  .theme :global(.i-sun) { display: none; }
+  :global(:root[data-theme='dark']) .theme :global(.i-sun) { display: block; }
+  :global(:root[data-theme='dark']) .theme :global(.i-moon) { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .theme :global(.i-sun) { display: block; }
+    :global(:root:not([data-theme='light'])) .theme :global(.i-moon) { display: none; }
+  }
+  @media (max-width: 640px) {
+    .hide-sm { display: none; }
+    .name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  }
+</style>

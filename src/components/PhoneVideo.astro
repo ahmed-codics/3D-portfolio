@@ -1,0 +1,51 @@
+---
+// A muted, looping clip in a phone frame. It loads only when scrolled into view,
+// does not autoplay for people who prefer reduced motion, and can always be paused.
+import Icon from './Icon.astro';
+interface Props { src: string; poster: string; label: string; class?: string }
+const { src, poster, label, class: cls } = Astro.props;
+---
+<div class:list={['phone', 'phone-video', cls]}>
+  <video muted loop playsinline preload="none" poster={poster} aria-label={label} data-src={src} width="540" height="960"></video>
+  <button class="pv-toggle" type="button" aria-label="Play video" data-state="paused">
+    <Icon name="play" class="i-play" /><Icon name="pause" class="i-pause" />
+  </button>
+</div>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('.phone-video').forEach((box) => {
+    const video = box.querySelector('video')!;
+    const btn = box.querySelector<HTMLButtonElement>('.pv-toggle')!;
+    let userPaused = reduce;
+    const load = () => { if (!video.src) video.src = video.dataset.src || ''; };
+    const sync = () => {
+      const playing = !video.paused;
+      btn.dataset.state = playing ? 'playing' : 'paused';
+      btn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+    };
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    btn.addEventListener('click', () => {
+      load();
+      if (video.paused) { userPaused = false; video.play().catch(() => {}); }
+      else { userPaused = true; video.pause(); }
+    });
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !userPaused) { load(); video.play().catch(() => {}); }
+      else if (!entry.isIntersecting && !video.paused) video.pause();
+    }, { threshold: 0.35 }).observe(box);
+  });
+</script>
+
+<style>
+  .phone-video { position: relative; }
+  .pv-toggle {
+    position: absolute; right: 14px; bottom: 14px;
+    display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(10, 16, 14, 0.7); color: #fff; cursor: pointer;
+  }
+  .pv-toggle :global(svg) { width: 15px; height: 15px; }
+  .pv-toggle[data-state='paused'] :global(.i-pause),
+  .pv-toggle[data-state='playing'] :global(.i-play) { display: none; }
+</style>

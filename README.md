@@ -1,12 +1,42 @@
-# React + Vite
+# ahmedmansour.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site of Ahmed Mansour, AI & full-stack engineer. A static [Astro](https://astro.build) site with no client framework. It ships about 2 KB of its own JavaScript, for the theme toggle, the copy-email button and the lazy video.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```sh
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview
+```
 
-## Expanding the ESLint configuration
+Node 22.12 or newer.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Where things are
+
+| Path | What |
+|---|---|
+| `src/data/` | All facts: contact links, Kavvi figures (`stats.ts`), experience, skills. Keep them identical to the CV. |
+| `src/pages/` | Home, the `/kavvi` and `/robotics-corner` case studies, 404 |
+| `src/components/` | Header, browser/phone frames, copy-email, architecture diagram |
+| `src/styles/global.css` | Design tokens (light and dark) and shared styles |
+| `src/assets/work/` | Screenshots (served as AVIF/WebP at several widths) |
+| `public/` | CV PDF, launch video, favicon, `og.png` link preview |
+| `vercel.json` | Astro preset, old-CV-link redirects, cache headers |
+
+## Keeping it true
+
+Every number or claim on the site must appear in the CV or come from a dated query. When the Kavvi figures change:
+1. Update `src/data/stats.ts` (`asOf` too).
+2. Update the CV to the same numbers and replace `public/Ahmed-Mansour-CV.pdf`.
+
+## QA (needs a Playwright install: `npm i -D playwright` or set `CHROME_PATH`)
+
+```sh
+node qa/check.mjs http://127.0.0.1:4321 qa/shots   # no sideways scroll or clipped text at 360-1280px, light and dark; theme toggle; copy button
+node qa/links.mjs dist http://127.0.0.1:4321        # every link resolves; banned-claims scan
+node qa/og.mjs                                      # re-render public/og.png
+```
+
+The previous 3D "terminal" version is kept at git tag `v1-terminal`.
