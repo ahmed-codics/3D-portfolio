@@ -70,7 +70,7 @@ function Nav() {
   }, [])
 
   return (
-    <motion.header className={`nav ${compact ? 'compact' : ''}`} initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+    <motion.header className={`nav ${compact ? 'compact' : ''}`} initial={{ x: '-50%', y: -80, opacity: 0 }} animate={{ x: '-50%', y: 0, opacity: 1 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
       <a href="#top" className="brand" aria-label="Ahmed Mansour, home">
         <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M12 48 28 14l9 20 7-13 8 27" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" /></svg>
         <span className="brand-name">Ahmed Mansour</span>
