@@ -151,3 +151,15 @@ footer { margin-top: 90px; padding: 24px 0; border-top: 1px solid var(--line); f
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+@media (max-width: 440px) {
+  .nav { padding: 5px 5px 5px 8px; gap: 0; max-width: calc(100vw - 16px); }
+  .brand { margin-right: 2px; }
+  .brand-name { display: none; }
+  .nav nav a { padding: 7px 8px; font-size: 12.5px; }
+  .nav-cta { margin-left: 2px; padding: 8px 12px; font-size: 12.5px; }
+}
+@media (max-width: 340px) {
+  .brand { display: none; }
+  .nav nav a[href="#contact"] { display: none; }
+}
