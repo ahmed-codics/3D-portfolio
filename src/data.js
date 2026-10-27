@@ -15,9 +15,9 @@ export const ROTATING = [
 ]
 
 export const STATS = [
+  { value: 4, suffix: '+', label: 'years shipping full-stack' },
   { value: 458, suffix: '', label: 'Kavvi sign-ups in 5 weeks' },
   { value: 8, suffix: '+', label: 'paying subscribers' },
-  { value: 8300, suffix: '+', label: 'AI runs served' },
   { value: 6, suffix: '', label: 'products shipped at Robotics Corner' },
 ]
 
@@ -79,6 +79,24 @@ export const JOBS = [
       'Finished RoboConnect, a robotics freelance marketplace with Paymob escrow, and helped build RoboAgent, an agentic coding IDE.',
     ],
   },
+  {
+    role: 'Full-Stack Developer',
+    org: 'Freelance',
+    when: 'Oct 2022 — Dec 2024',
+    points: [
+      'Built El-Bahrawy Academy alone, end to end: a live bilingual English-learning platform with lessons by grade, quizzes, progress tracking and student accounts.',
+      'Built and deployed Abnaa Hamdallah, a live management system for a sanitary-ware store.',
+    ],
+  },
+  {
+    role: 'Web Developer',
+    org: 'Memphis Express',
+    when: 'May 2022 — Oct 2023',
+    points: [
+      'Built the customer-facing site where users booked international shipments online. It ran with real users.',
+      'Built the internal CRM system used by the office team.',
+    ],
+  },
 ]
 
 export const NAV = [
@@ -106,13 +124,22 @@ export const KAVVI_PIPE = [
   ['Verify', 'Answers are solved twice and re-checked by a stronger model.'],
 ]
 
-export const KAVVI_FEATURES = [
-  ['Chat-first home', 'Ask anything or drop a file. The tutor answers from your own material and links back to the source page.'],
-  ['Lessons that hold up', 'Each concept gets an explanation, a concept check and flashcards, then a final exam. Read-aloud in Arabic and English.'],
-  ['Study plan that adapts', 'Deadlines turn into daily sessions, with replanning when you fall behind and a phone-first schedule.'],
-  ['Answer cards', 'Photograph a question and get a worked answer, solved twice independently and cross-checked before you see it.'],
-  ['Kavvi Courses', 'Tell it what you want to be able to do. It designs a course around your goal, level and time, one short episode a day.'],
-  ['Truly bilingual', 'Arabic and English with full right-to-left support, built for Egyptian students first.'],
+export const KAVVI_SUBJECTS = [
+  ['Lecture to lesson', 'Upload a lecture PDF and it becomes a lesson, broken into short concepts.'],
+  ['Live voice-over, synced PDF', 'Each concept is taught with a live voice-over while the PDF turns to the exact page being explained.'],
+  ['Ask as you learn', 'A chat beside every concept answers follow-up questions from your own material.'],
+  ['Quiz, explain, retry', 'After each concept comes a 3-question quiz. Every wrong answer is explained again, then you try again.'],
+  ['Mistake bank & flashcards', 'Every mistake is saved, so Kavvi knows your weak points. Flashcards and exams come from your own material, with answers solved twice and cross-checked.'],
+  ['Smart schedule', 'Add your lecture times and how much you can study, and when. Kavvi builds a plan with review sessions and reminders.'],
+]
+
+export const KAVVI_COURSES = [
+  ['Any goal, in seconds', 'Type "Python from zero" or "German for my job" and get a personal course with a map of the whole journey.'],
+  ['Story-style episodes', 'About 10 minutes a day, with recurring characters, cliffhangers and a bit of humor. A "straight to the point" switch for less story.'],
+  ['Learn by doing', 'Answer questions, write real code, work in live spreadsheets and speak out loud. Every answer is checked as you go.'],
+  ['Remembers your weak spots', 'It brings back what you struggle with at the right time.'],
+  ['Real work you keep', 'What you learn turns into real pieces of work you can keep.'],
+  ['English or Egyptian Arabic', 'Full right-to-left support, built for Egyptian learners first.'],
 ]
 
 export const KAVVI_ENGINEERING = [
