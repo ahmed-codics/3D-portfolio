@@ -3,7 +3,7 @@ import { motion, useInView, useScroll, useSpring, useTransform, animate } from '
 import Network from './Network.jsx'
 import {
   EMAIL, LINKS, ROTATING, STATS, STACK, PROJECTS, JOBS, NAV,
-  KAVVI_STATS, KAVVI_PIPE, KAVVI_FEATURES, KAVVI_ENGINEERING,
+  KAVVI_STATS, KAVVI_PIPE, KAVVI_SUBJECTS, KAVVI_COURSES, KAVVI_ENGINEERING,
 } from './data.js'
 
 const fade = {
@@ -100,7 +100,7 @@ function Hero() {
           I build <em>complete</em> products,<br />from first line to first paying user.
         </motion.h1>
         <motion.p className="sub" variants={fade} custom={2} initial="hidden" animate="show">
-          Full-stack and AI engineer. Right now I ship <Rotating />
+          Full-stack and AI engineer, 4+ years shipping. Right now I ship <Rotating />
         </motion.p>
         <motion.div className="cta" variants={fade} custom={3} initial="hidden" animate="show">
           <a className="btn primary" href="#kavvi">See Kavvi</a>
@@ -184,9 +184,10 @@ function Kavvi() {
       </Reveal>
       <Reveal className="kavvi-intro">
         <p className="lead">
-          Kavvi began as an AI study planner for Egyptian university students and grew into a learning studio for any topic. You upload a
-          lecture or just say what you want to learn, and it turns that into lessons, practice, exams and whole courses, in Arabic or English.
-          I designed it, wrote every service, run the servers, handle billing and talk to the users.
+          Kavvi began as an AI study planner for Egyptian university students and grew into a learning studio with two parts.
+          <b> Kavvi Subjects</b> turns your own lectures into taught lessons, quizzes and a study plan. <b>Kavvi Courses</b> builds a course
+          around any goal, one episode a day. Both work in Arabic or English, and the AI keeps a long-term memory of each learner from their
+          chats, lessons and performance. I designed it, wrote every service, run the servers, handle billing and talk to the users.
         </p>
         <div className="cta"><a className="btn primary" href="https://kavvi.io" target="_blank" rel="noreferrer">Open kavvi.io ↗</a></div>
       </Reveal>
@@ -201,9 +202,16 @@ function Kavvi() {
       <Reveal><h3 className="sub-h">How a lecture becomes a lesson</h3></Reveal>
       <Reveal><Pipeline /></Reveal>
 
-      <Reveal><h3 className="sub-h">What learners get</h3></Reveal>
+      <Reveal><h3 className="sub-h">Kavvi Subjects: your lectures, taught to you</h3></Reveal>
       <div className="feat-grid">
-        {KAVVI_FEATURES.map(([t, d], i) => (
+        {KAVVI_SUBJECTS.map(([t, d], i) => (
+          <Reveal key={t} i={i % 3} className="feat"><b>{t}</b><p>{d}</p></Reveal>
+        ))}
+      </div>
+
+      <Reveal><h3 className="sub-h">Kavvi Courses: learn anything, one episode a day</h3></Reveal>
+      <div className="feat-grid">
+        {KAVVI_COURSES.map(([t, d], i) => (
           <Reveal key={t} i={i % 3} className="feat"><b>{t}</b><p>{d}</p></Reveal>
         ))}
       </div>
@@ -261,7 +269,7 @@ function Experience() {
   const h = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
   return (
     <section id="experience" className="wrap section">
-      <Reveal><p className="eyebrow">Experience</p><h2>Nine months, six products, <em>one shared login.</em></h2></Reveal>
+      <Reveal><p className="eyebrow">Experience</p><h2>Four years of shipping, <em>real users every time.</em></h2></Reveal>
       <div className="timeline" ref={ref}>
         <div className="rail"><motion.div className="rail-fill" style={{ height: h }} /></div>
         {JOBS.map((j, i) => (
