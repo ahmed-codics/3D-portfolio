@@ -1,12 +1,27 @@
-# React + Vite
+# Ahmed Mansour: portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My portfolio site, live at **[ahmedmansour.vercel.app](https://ahmedmansour.vercel.app)**.
 
-Currently, two official plugins are available:
+It shows my work as a full-stack and AI engineer: a case study of [Kavvi](https://kavvi.io) (the AI learning platform I built and run), my other live projects, and my experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Built with
 
-## Expanding the ESLint configuration
+- Vite and React 19
+- framer-motion for scroll animations, the floating navigation and tilt cards
+- A canvas particle network drawn behind the hero
+- Plain CSS, deployed on Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run it locally
+
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # production build
+```
+
+## Structure
+
+- `src/data.js` holds all the content: stats, experience, Kavvi features and projects
+- `src/App.jsx` holds the sections
+- `src/Network.jsx` is the particle background
+- `public/` holds screenshots and the downloadable CV
